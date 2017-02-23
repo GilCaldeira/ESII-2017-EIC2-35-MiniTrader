@@ -19,7 +19,7 @@ public class Session {
 
 	public static List<Order> history = new ArrayList<>();
 
-	String comentarioRandom;
+	String comentarioRandom23;
 	String comentarioRandom2;
 	String comentarioRandom3;
 
