@@ -20,6 +20,6 @@ public class Session {
 	public static List<Order> history = new ArrayList<>();
 
 	
-	//COMENTARIO 1
+	String comentarioRandom;
 
 }
