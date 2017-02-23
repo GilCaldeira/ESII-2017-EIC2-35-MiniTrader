@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 
  * @author alc
  */
-//ABCassa
+//ABCassargfd
 
 public class Order implements Serializable {
 	/**
