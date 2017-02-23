@@ -19,6 +19,5 @@ public class Session {
 
 	public static List<Order> history = new ArrayList<>();
 	
-	#NoGITHUB
-	#AGAIN
+
 }
