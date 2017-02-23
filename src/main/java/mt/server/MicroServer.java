@@ -27,6 +27,8 @@ import mt.filter.AnalyticsFilter;
  * @author Group 78
  *
  */
+
+//Commit teste 1 Bernardo 
 public class MicroServer implements MicroTraderServer {
 	
 	public static void main(String[] args) {
