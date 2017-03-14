@@ -1,11 +1,15 @@
 package mt.client.ui;
 
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import mt.client.controller.Controller;
@@ -37,8 +41,6 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-    	placeExitBtn = new javax.swing.JButton();
-    	cancelOrderBtn= new javax.swing.JButton();
         placeOrderBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         unfulfilledOrdersScrollPane = new javax.swing.JScrollPane();
@@ -53,7 +55,17 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-
+        
+    // Novas Funcionalidades
+//**********************************        
+//        placeExitBtn = new javax.swing.JButton();
+    	cancelOrderBtn= new javax.swing.JButton();
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        panel.add(placeOrderBtn);
+        panel.add(cancelOrderBtn);
+//        panel.add(placeExitBtn);
+//************************************
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(screenTitle + " | (Disconnected)");
         setResizable(false);
@@ -70,12 +82,12 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
             }
         });
         
-        placeExitBtn.setText("Exit Order");
-        placeExitBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeOrderBtnActionPerformed(evt);
-            }
-        });
+//        placeExitBtn.setText("Exit Order");
+//        placeExitBtn.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                placeOrderBtnActionPerformed(evt);
+//            }
+//        });
         
         cancelOrderBtn.setText("Cancel Order");
         cancelOrderBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -151,15 +163,16 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(placeOrderBtn))
+                        .addComponent(panel))
 //                    	.addComponent(placeExitBtn))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
                 .addContainerGap())
@@ -170,9 +183,35 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(placeOrderBtn)
+                .addComponent(panel)
                 .addGap(6, 6, 6))
         );
+        
+        //*************************
+        
+//        
+//        javax.swing.GroupLayout layout1 = new javax.swing.GroupLayout(getContentPane());
+//        getContentPane().setLayout(layout1);
+//        layout1.setHorizontalGroup(
+//            layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(layout1.createSequentialGroup()
+//                .addGroup(layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout1.createSequentialGroup()
+//                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+////                        .addComponent(placeOrderBtn))
+//                    	.addComponent(placeExitBtn))
+//                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
+//                .addContainerGap())
+//        );
+//        layout1.setVerticalGroup(
+//            layout1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout1.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//                .addComponent(placeExitBtn)
+//                .addGap(6, 6, 6))
+//        );
 
         setBounds(0, 0, 640, 502);
     }                        
