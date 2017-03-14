@@ -28,7 +28,7 @@ import mt.filter.AnalyticsFilter;
  *
  */
 
-//Commit teste 1 Bernardo 
+//Commit teste 1 Bernardoa
 public class MicroServer implements MicroTraderServer {
 	
 	public static void main(String[] args) {
