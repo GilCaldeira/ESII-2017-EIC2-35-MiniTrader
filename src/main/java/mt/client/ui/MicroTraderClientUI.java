@@ -37,6 +37,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
+    	//new Button exit
+    	placeExitBtn = new javax.swing.JButton();
         placeOrderBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         unfulfilledOrdersScrollPane = new javax.swing.JScrollPane();
@@ -67,6 +69,14 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
                 placeOrderBtnActionPerformed(evt);
             }
         });
+        
+        placeExitBtn.setText("Exit Order");
+        placeExitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderBtnActionPerformed(evt);
+            }
+        });
+        
 
         unfulfilledOrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,6 +154,7 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(placeOrderBtn))
+//                    	.addComponent(placeExitBtn))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -211,7 +222,16 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You must be connected to a server to place orders. \nNavigate to File > Connect.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
-    }                                             
+    }                   
+    
+    private void placeExitBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        if (controller.isConnected()) {
+            System.exit(0);
+        } else {
+            System.out.println("Erro ao sair do sistema");
+        }
+
+    }                          
 
     private void windowClosing(java.awt.event.WindowEvent evt) {                               
         if (controller.isConnected()) {
@@ -249,6 +269,7 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane myOrdersScrollPane;
     private javax.swing.JTable myOrdersTable;
     private javax.swing.JButton placeOrderBtn;
+    private javax.swing.JButton placeExitBtn;
     private javax.swing.JScrollPane unfulfilledOrdersScrollPane;
     private javax.swing.JTable unfulfilledOrdersTable;
 
