@@ -37,8 +37,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-    	//new Button exit
     	placeExitBtn = new javax.swing.JButton();
+    	cancelOrderBtn= new javax.swing.JButton();
         placeOrderBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         unfulfilledOrdersScrollPane = new javax.swing.JScrollPane();
@@ -77,6 +77,12 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
             }
         });
         
+        cancelOrderBtn.setText("Cancel Order");
+        cancelOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	placeCancelOrdeBtnActionPerformed(evt);
+            }
+        });
 
         unfulfilledOrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -231,7 +237,16 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
             System.out.println("Erro ao sair do sistema");
         }
 
-    }                          
+    }     
+    
+    private void placeCancelOrdeBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        if (controller.isConnected()) {
+            //Seleccionar item e apagar order.
+        } else {
+            System.out.println("Order Vazia");
+        }
+
+    } 
 
     private void windowClosing(java.awt.event.WindowEvent evt) {                               
         if (controller.isConnected()) {
@@ -270,6 +285,7 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     private javax.swing.JTable myOrdersTable;
     private javax.swing.JButton placeOrderBtn;
     private javax.swing.JButton placeExitBtn;
+    private javax.swing.JButton cancelOrderBtn;
     private javax.swing.JScrollPane unfulfilledOrdersScrollPane;
     private javax.swing.JTable unfulfilledOrdersTable;
 
