@@ -1,5 +1,6 @@
 package mt.client.ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -60,6 +61,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
 //**********************************        
 //        placeExitBtn = new javax.swing.JButton();
     	cancelOrderBtn= new javax.swing.JButton();
+    	cancelOrderBtn.setBackground(Color.RED);
+    	cancelOrderBtn.setForeground(Color.BLUE);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
         panel.add(placeOrderBtn);
@@ -74,7 +77,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
                 MicroTraderClientUI.this.windowClosing(evt);
             }
         });
-
+        placeOrderBtn.setForeground(Color.BLUE);
+        placeOrderBtn.setBackground(Color.GREEN);
         placeOrderBtn.setText("Place Order");
         placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
