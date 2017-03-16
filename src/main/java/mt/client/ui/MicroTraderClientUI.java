@@ -291,7 +291,6 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         } else {
             System.out.println("Order Vazia");
         }
-
     } 
 
     private void windowClosing(java.awt.event.WindowEvent evt) {                               
