@@ -275,14 +275,14 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
 
     }                   
     
-    private void placeExitBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        if (controller.isConnected()) {
-            System.exit(0);
-        } else {
-            System.out.println("Erro ao sair do sistema");
-        }
-
-    }     
+//    private void placeExitBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+//        if (controller.isConnected()) {
+//            System.exit(0);
+//        } else {
+//            System.out.println("Erro ao sair do sistema");
+//        }
+//
+//    }     
     
     private void placeCancelOrdeBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
         if (controller.isConnected()) {
