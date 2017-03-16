@@ -13,6 +13,9 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import mt.Order;
 import mt.comm.ServerComm;
 import mt.comm.ServerSideMessage;
@@ -32,6 +35,13 @@ import mt.filter.AnalyticsFilter;
 public class MicroServer implements MicroTraderServer {
 	
 	public static void main(String[] args) {
+		
+		   JFrame frame = new JFrame("Server  View");
+		   JOptionPane.showMessageDialog(frame,
+		        "[Grupo 35EIC2] Servidor está ligado , Bem Vindo :)",
+		       "Apresentação",
+		        JOptionPane.INFORMATION_MESSAGE);
+		   
 		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
 		MicroTraderServer server = new MicroServer();
 		server.start(serverComm);
