@@ -79,6 +79,7 @@ public class Controller {
 	public void sendOrder(Order order) throws Exception {
 		if (Session.clientComm.isConnected()) {
 			Session.clientComm.sendOrder(order);
+			
 		} else {
 			throw new Exception("You're not connected to any server.");
 		}

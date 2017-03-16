@@ -29,6 +29,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     
     private final Controller controller = new Controller();
     
+    private  PlaceOrderForm form;
+    
     public boolean teste = false;
     
     public MicroTraderClientUI() {
@@ -260,7 +262,7 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
 
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
         if (controller.isConnected()) {
-            PlaceOrderForm form = new PlaceOrderForm(this, true);
+             form = new PlaceOrderForm(this, true);
             form.setLocationRelativeTo(this);
             form.setVisible(true);
         } else {
@@ -280,7 +282,8 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     
     private void placeCancelOrdeBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
         if (controller.isConnected()) {
-            //Seleccionar item e apagar order.
+        	Session.orders.remove(0);
+        	Session.history.remove(0);
         } else {
             System.out.println("Order Vazia");
         }

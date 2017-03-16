@@ -367,5 +367,11 @@ public class MicroServer implements MicroTraderServer {
 			}
 		}
 	}
+	
+//********* Funçao que permite apagar order ***************
+	
+//	private void removeOrder(){
+//		order
+//	}
 
 }
