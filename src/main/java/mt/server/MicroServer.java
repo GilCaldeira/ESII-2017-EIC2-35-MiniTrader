@@ -236,12 +236,14 @@ public class MicroServer implements MicroTraderServer {
 
 		// if is buy order
 		if (o.isBuyOrder()) {
-			processBuy(msg.getOrder());
+//			if(o.getNickname()!= msg.getSenderNickname())
+				processBuy(msg.getOrder());
 		}
 		
 		// if is sell order
 		if (o.isSellOrder()) {
-			processSell(msg.getOrder());
+//			if(o.getNickname()!= msg.getSenderNickname())
+				processSell(msg.getOrder());
 		}
 
 		// notify clients of changed order
@@ -275,12 +277,16 @@ public class MicroServer implements MicroTraderServer {
 	 * @param sellOrder
 	 * 		Order sent by the client with a number of units of a stock and the price per unit he wants to sell
 	 */
+	
+// **1. Os clientes não estão autorizados a emitir ordens de venda
+//	para as suas próprias ordens de compra e vice-versa (região UE);
 	private void processSell(Order sellOrder){
 		LOGGER.log(Level.INFO, "Processing sell order...");
 		
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			for (Order o : entry.getValue()) {
-				if (o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
+				if (!entry.getKey().equals(sellOrder.getNickname()) &&  o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
+					System.out.println("Nome do comprador : " + entry.getKey() + " Nome do vendedor : " + sellOrder.getNickname());
 					doTransaction (o, sellOrder);
 				}
 			}
@@ -294,12 +300,16 @@ public class MicroServer implements MicroTraderServer {
 	 * @param buyOrder
 	 *          Order sent by the client with a number of units of a stock and the price per unit he wants to buy
 	 */
+	
+// **1. Os clientes não estão autorizados a emitir ordens de venda
+//		para as suas próprias ordens de compra e vice-versa (região UE);
 	private void processBuy(Order buyOrder) {
 		LOGGER.log(Level.INFO, "Processing buy order...");
 
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			for (Order o : entry.getValue()) {
-				if (o.isSellOrder() && buyOrder.getStock().equals(o.getStock()) && o.getPricePerUnit() <= buyOrder.getPricePerUnit()) {
+				if (!entry.getKey().equals(buyOrder.getNickname()) && o.isSellOrder() && buyOrder.getStock().equals(o.getStock()) && o.getPricePerUnit() <= buyOrder.getPricePerUnit()) {
+					System.out.println("Nome do vendedor : " + entry.getKey() + " Nome do comprador : " + buyOrder.getNickname());
 					doTransaction(buyOrder, o);
 				}
 			}
@@ -377,11 +387,5 @@ public class MicroServer implements MicroTraderServer {
 			}
 		}
 	}
-	
-//********* Funçao que permite apagar order ***************
-	
-//	private void removeOrder(){
-//		order
-//	}
 
 }
