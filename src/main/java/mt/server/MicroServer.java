@@ -128,7 +128,9 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Shutting Down Server...");
 	}
 
-
+	public void recordTransactionsInXML(){
+		
+	}
 	/**
 	 * Verify if user is already connected
 	 * 
