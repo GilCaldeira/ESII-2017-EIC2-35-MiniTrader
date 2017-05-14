@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><transitions><Order id="1"><BuyOrSellOrder>buy</BuyOrSellOrder><Stock>10</Stock><NumberOfUnits>11</NumberOfUnits><PricePerUnit>100.0</PricePerUnit></Order><Order id="1"><BuyOrSellOrder>sell</BuyOrSellOrder><Stock>10</Stock><NumberOfUnits>11</NumberOfUnits><PricePerUnit>100.0</PricePerUnit></Order></transitions>

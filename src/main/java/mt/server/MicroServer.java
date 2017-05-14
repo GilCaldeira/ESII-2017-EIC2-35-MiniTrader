@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
 
 import mt.Order;
 import mt.comm.ServerComm;
@@ -33,6 +34,9 @@ import mt.filter.AnalyticsFilter;
 
 //Commit teste 1 Bernardoa
 public class MicroServer implements MicroTraderServer {
+	
+	//class to write order in a xml file
+	private WriteXMLFile xml;
 	
 	public static void main(String[] args) {
 		
@@ -79,6 +83,11 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Creating the server...");
 		orderMap = new HashMap<String, Set<Order>>();
 		updatedOrders = new HashSet<>();
+		try {
+			this.xml = new WriteXMLFile();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -237,11 +246,17 @@ public class MicroServer implements MicroTraderServer {
 		// if is buy order
 		if (o.isBuyOrder()) {
 			processBuy(msg.getOrder());
+			//Record buy order in an XML document without sellers/buyers identification(region US);
+			this.xml.addOrder(o, "buy");
+			this.xml.writeXML();
 		}
 		
 		// if is sell order
 		if (o.isSellOrder()) {
 			processSell(msg.getOrder());
+			//Record sell order in an XML document without sellers/buyers identification(region US);
+			this.xml.addOrder(o, "sell");
+			this.xml.writeXML();
 		}
 
 		// notify clients of changed order
