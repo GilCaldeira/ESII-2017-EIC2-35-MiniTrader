@@ -126,4 +126,7 @@ public class ConnectForm extends javax.swing.JDialog {
 	private javax.swing.JTextField hostTxt;
 	private javax.swing.JTextField nicknameTxt;
 	private javax.swing.JLabel niknameLabel;
+	
+	
+
 }

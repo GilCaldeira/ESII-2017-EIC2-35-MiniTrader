@@ -72,7 +72,7 @@ public class Order implements Serializable {
 	}
 	
 	
-	private Order(String nickname, boolean isBuyOrder, String stock, int numberOfUnits, double pricePerUnit
+	public Order(String nickname, boolean isBuyOrder, String stock, int numberOfUnits, double pricePerUnit
 			) {
 		super();
 	
