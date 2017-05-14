@@ -84,9 +84,9 @@ public class MicroServer implements MicroTraderServer {
 		orderMap = new HashMap<String, Set<Order>>();
 		updatedOrders = new HashSet<>();
 		try {
-			this.xml = new WriteXMLFile();
+			xml = new WriteXMLFile();
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			
 		}
 	}
 

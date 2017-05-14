@@ -71,7 +71,7 @@ public class WriteXMLFile {
 				elements.setAttributeNode(attr);
 		
 				// sellers/buyers identification 
-				Element identification= doc.createElement("Seller/Buyer identification");
+				Element identification= doc.createElement("Identification");
 				identification.appendChild(doc.createTextNode(order.getNickname()));
 				elements.appendChild(identification);				
 				
