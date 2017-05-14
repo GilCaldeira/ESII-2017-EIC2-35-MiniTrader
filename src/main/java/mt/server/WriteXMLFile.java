@@ -17,6 +17,7 @@ import mt.Order;
 
 public class WriteXMLFile {
 	
+	private int id;
 	private Document doc;
 	private DocumentBuilderFactory docFactory;
 	private DocumentBuilder docBuilder; 
@@ -27,6 +28,7 @@ public class WriteXMLFile {
 	private String buyOrSellOrder;
 	
 	public WriteXMLFile () throws ParserConfigurationException{
+		this.id=0;
 		this.docFactory = DocumentBuilderFactory.newInstance();
 		this.docBuilder = docFactory.newDocumentBuilder();
 		this.doc = docBuilder.newDocument();
@@ -65,7 +67,7 @@ public class WriteXMLFile {
 		
 				// set attribute to staff element
 				Attr attr = doc.createAttribute("id");
-				attr.setValue("1");
+				attr.setValue(String.valueOf( (id+1) ));
 				elements.setAttributeNode(attr);
 		
 				// BuyOrSellOrder
