@@ -36,6 +36,7 @@ public class MicroServer implements MicroTraderServer {
 	
 	public static void main(String[] args) {
 		
+			
 		   JFrame frame = new JFrame("Server  View");
 		   JOptionPane.showMessageDialog(frame,
 		        "[Grupo 35EIC2] Servidor está ligado , Bem Vindo :)",
@@ -75,6 +76,9 @@ public class MicroServer implements MicroTraderServer {
 	/**
 	 * Constructor
 	 */
+	
+	public int contadorOrdensVenda=0;
+	
 	public MicroServer() {
 		LOGGER.log(Level.INFO, "Creating the server...");
 		orderMap = new HashMap<String, Set<Order>>();
@@ -284,8 +288,10 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Processing sell order...");
 		
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
+//			if(entry.getKey().equals(sellOrder.getNickname() && entry.getValue().))
+//					contadorOrdensVenda ++;
 			for (Order o : entry.getValue()) {
-				if (!entry.getKey().equals(sellOrder.getNickname()) &&  o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
+				if (contadorOrdensVenda <= 5 && !entry.getKey().equals(sellOrder.getNickname()) &&  o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
 					System.out.println("Nome do comprador : " + entry.getKey() + " Nome do vendedor : " + sellOrder.getNickname());
 					doTransaction (o, sellOrder);
 				}
