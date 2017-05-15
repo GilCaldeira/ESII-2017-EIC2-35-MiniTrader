@@ -231,7 +231,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 							Order.createBuyOrder(controller.getLoggedUser(), stock, (int) numberOfUnits, pricePerUnit));
 				} else if (sellRdBtn.isSelected()) {
 					tmp2 = 0;
-
+					int a=0;
 					int maxSells = 5; // maximos de SELLS - 1
 					String username = Session.loggedUser;
 					List<Order> ordersAux = Session.orders; // vai buscar a
