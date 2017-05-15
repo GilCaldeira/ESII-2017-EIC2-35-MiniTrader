@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ClassDiagram>
+<<<<<<< HEAD
     <Class name="mt.server.MicroServer" x="346" y="206">
+=======
+    <Class name="mt.server.MicroServer" x="196" y="62">
+>>>>>>> branch 'MiniTrader-AS-1.1' of https://github.com/GilCaldeira/ESII-2017-EIC2-35-MiniTrader
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
