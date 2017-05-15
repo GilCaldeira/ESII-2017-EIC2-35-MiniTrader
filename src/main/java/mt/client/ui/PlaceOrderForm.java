@@ -1,11 +1,7 @@
 package mt.client.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 import mt.Order;
-import mt.client.Session;
 import mt.client.controller.Controller;
 
 /**
@@ -13,7 +9,7 @@ import mt.client.controller.Controller;
  *
  */
 public class PlaceOrderForm extends javax.swing.JDialog {
-	int tmp2 =0;
+
 	private Controller controller = new Controller();
 
 	/**
@@ -230,41 +226,8 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 					controller.sendOrder(
 							Order.createBuyOrder(controller.getLoggedUser(), stock, (int) numberOfUnits, pricePerUnit));
 				} else if (sellRdBtn.isSelected()) {
-					tmp2 = 0;
-					int a=0;
-					int maxSells = 5; // maximos de SELLS - 1
-					String username = Session.loggedUser;
-					List<Order> ordersAux = Session.orders; // vai buscar a
-															// lista de ORDERS
-					List<Order> ordersAux2 = new ArrayList<Order>();
-					List<Order> ordersAux3 = new ArrayList<Order>();
-
-					if (ordersAux.size() > 0) { // CASO HAJA ORDERS
-						for (Order o : ordersAux) {
-							System.out.println(o.getNickname());
-							System.out.println(username);
-							if ((username.equals(o.getNickname())) && (o.isBuyOrder() == false)) {
-								ordersAux2.add(o);
-							}
-							if (!username.equals(o.getNickname()) && (o.isBuyOrder() == false)) {
-								ordersAux3.add(o);
-							}
-						}
-						System.out.println("a" + ordersAux2.size());
-						System.out.println("aa" + ordersAux3.size());
-
-						if (ordersAux2.size() > maxSells) {
-							tmp2 = 1;
-							JOptionPane.showMessageDialog(this,
-									"[Region US] Não permitido mais de 6 Orders de venda" + " \nCancela uma ordem ",
-									"Warning", JOptionPane.WARNING_MESSAGE);
-						}
-					}
-
-					if (tmp2 == 0)
-						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,
-								(int) numberOfUnits, pricePerUnit));
-
+					controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock, (int) numberOfUnits,
+							pricePerUnit));
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
