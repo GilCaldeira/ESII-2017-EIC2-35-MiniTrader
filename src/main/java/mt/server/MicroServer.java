@@ -50,7 +50,6 @@ public class MicroServer implements MicroTraderServer {
 		MicroTraderServer server = new MicroServer();
 		server.start(serverComm);
 	}
-
 	public static final Logger LOGGER = Logger.getLogger(MicroServer.class.getName());
 
 	/**
@@ -294,8 +293,11 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Processing sell order...");
 		
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
+//			if(entry.getKey().equals(sellOrder.getNickname()))
+//					contadorOrdemVenda ++;
 			for (Order o : entry.getValue()) {
-				if (o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
+				if (!entry.getKey().equals(sellOrder.getNickname()) &&  o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
+					System.out.println("Nome do comprador : " + entry.getKey() + " Nome do vendedor : " + sellOrder.getNickname());
 					doTransaction (o, sellOrder);
 				}
 			}
