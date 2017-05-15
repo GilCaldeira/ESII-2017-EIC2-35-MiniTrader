@@ -264,11 +264,22 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         }
     }                                    
 
-    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {  
+    /*
+     * 
+     */
+    	
         if (controller.isConnected()) {
-             form = new PlaceOrderForm(this, true);
-            form.setLocationRelativeTo(this);
-            form.setVisible(true);
+        	if(Session.orders.size() <6){
+       
+        		form = new PlaceOrderForm(this, true);
+                form.setLocationRelativeTo(this);
+                form.setVisible(true);
+        	}
+        	else if (Session.orders.size() >= 6){
+        		 JOptionPane.showMessageDialog(this, "Mais de 6 ordens não é permitido", "Warning", JOptionPane.WARNING_MESSAGE);
+        	}
+             
         } else {
             JOptionPane.showMessageDialog(this, "You must be connected to a server to place orders. \nNavigate to File > Connect.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -284,12 +295,16 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
 //
 //    }     
     
-    private void placeCancelOrdeBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void placeCancelOrdeBtnActionPerformed(java.awt.event.ActionEvent evt) {    
+    
         if (controller.isConnected()) {
+        	if(Session.orders.size() == 0){
+        	JOptionPane.showMessageDialog(this, "Sem orders , Não pode cancelar ", "Warning", JOptionPane.WARNING_MESSAGE);
+        	}
+         else if(Session.orders.size()!= 0){
         	Session.orders.remove(0);
         	Session.history.remove(0);
-        } else {
-            System.out.println("Order Vazia");
+        }
         }
     } 
 
