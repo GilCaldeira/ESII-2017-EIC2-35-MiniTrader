@@ -238,7 +238,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 															// lista de ORDERS
 					List<Order> ordersAux2 = new ArrayList<Order>();
 					List<Order> ordersAux3 = new ArrayList<Order>();
-
+//h
 					if (ordersAux.size() > 0) { // CASO HAJA ORDERS
 						for (Order o : ordersAux) {
 							System.out.println(o.getNickname());
