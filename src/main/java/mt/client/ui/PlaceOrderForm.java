@@ -1,7 +1,11 @@
 package mt.client.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 import mt.Order;
+import mt.client.Session;
 import mt.client.controller.Controller;
 
 /**
@@ -9,6 +13,8 @@ import mt.client.controller.Controller;
  *
  */
 public class PlaceOrderForm extends javax.swing.JDialog {
+	// VARIAVEIS LOCAIS
+	int tmp2 = 0;
 
 	private Controller controller = new Controller();
 
@@ -69,37 +75,30 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(
-				jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout
-						.createSequentialGroup().addGroup(jPanel1Layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout
-										.createSequentialGroup().addContainerGap()
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
+						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap()
+								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+										.addComponent(nicknameLabel).addComponent(numberLabel).addComponent(stockLabel)
+										.addComponent(priceLabel))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(stockTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 240,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addGroup(jPanel1Layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-												.addComponent(nicknameLabel).addComponent(numberLabel).addComponent(
-														stockLabel)
-												.addComponent(priceLabel))
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addGroup(jPanel1Layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-												.addComponent(stockTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 240,
-														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGroup(jPanel1Layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-																false)
-														.addComponent(pricePerUnitTxt,
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addComponent(numberOfUnitsTxt,
-																javax.swing.GroupLayout.Alignment.LEADING,
-																javax.swing.GroupLayout.DEFAULT_SIZE, 130,
-																Short.MAX_VALUE))
-												.addComponent(jLabel1)))
-								.addGroup(jPanel1Layout.createSequentialGroup().addGap(46, 46, 46)
-										.addComponent(operationLabel)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(buyRdBtn)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(sellRdBtn)))
+												.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+												.addComponent(pricePerUnitTxt,
+														javax.swing.GroupLayout.Alignment.LEADING)
+												.addComponent(numberOfUnitsTxt,
+														javax.swing.GroupLayout.Alignment.LEADING,
+														javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+										.addComponent(jLabel1)))
+						.addGroup(jPanel1Layout.createSequentialGroup().addGap(46, 46, 46).addComponent(operationLabel)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(buyRdBtn)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(sellRdBtn)))
 						.addContainerGap(46, Short.MAX_VALUE)));
 		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap(11, Short.MAX_VALUE)
@@ -139,18 +138,19 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addContainerGap()
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-										layout.createSequentialGroup().addComponent(okBtn)
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-												.addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86,
-														javax.swing.GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap()));
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup().addContainerGap()
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+												layout.createSequentialGroup().addComponent(okBtn)
+														.addPreferredGap(
+																javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+														.addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
+																86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+								.addContainerGap()));
 
 		layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] { cancelBtn, okBtn });
 
@@ -180,9 +180,10 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 			message = (message.isEmpty() ? "" : message + "\n") + "Stock must be provided.";
 		}
 
-//   Uma quantidade de ordem única (compra ou ordem de venda) nunca pode ser inferior a 10 unidades (todas as regiões)
-		
-		if (numberOfUnitsTxt.getText().isEmpty() ||Integer.parseInt(numberOfUnitsTxt.getText()) < 10) {
+		// Uma quantidade de ordem única (compra ou ordem de venda) nunca pode
+		// ser inferior a 10 unidades (todas as regiões)
+
+		if (numberOfUnitsTxt.getText().isEmpty() || Integer.parseInt(numberOfUnitsTxt.getText()) < 10) {
 			message = (message.isEmpty() ? "" : message + "\n") + "Number of units must be provided.";
 		} else {
 			try {
@@ -222,12 +223,46 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 			JOptionPane.showMessageDialog(this, message, "Warning", JOptionPane.WARNING_MESSAGE);
 		} else {
 			try {
+
 				if (buyRdBtn.isSelected()) {
 					controller.sendOrder(
 							Order.createBuyOrder(controller.getLoggedUser(), stock, (int) numberOfUnits, pricePerUnit));
 				} else if (sellRdBtn.isSelected()) {
-					controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock, (int) numberOfUnits,
-							pricePerUnit));
+					tmp2 = 0;
+
+					int maxSells = 5; // maximos de SELLS - 1
+					String username = Session.loggedUser;
+					List<Order> ordersAux = Session.orders; // vai buscar a
+															// lista de ORDERS
+					List<Order> ordersAux2 = new ArrayList<Order>();
+					List<Order> ordersAux3 = new ArrayList<Order>();
+
+					if (ordersAux.size() > 0) { // CASO HAJA ORDERS
+						for (Order o : ordersAux) {
+							System.out.println(o.getNickname());
+							System.out.println(username);
+							if ((username.equals(o.getNickname())) && (o.isBuyOrder() == false)) {
+								ordersAux2.add(o);
+							}
+							if (!username.equals(o.getNickname()) && (o.isBuyOrder() == false)) {
+								ordersAux3.add(o);
+							}
+						}
+						System.out.println("a" + ordersAux2.size());
+						System.out.println("aa" + ordersAux3.size());
+
+						if (ordersAux2.size() > maxSells) {
+							tmp2 = 1;
+							JOptionPane.showMessageDialog(this,
+									"[Region US] Não permitido mais de 6 Orders de venda" + " \nCancela uma ordem ",
+									"Warning", JOptionPane.WARNING_MESSAGE);
+						}
+					}
+
+					if (tmp2 == 0)
+						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,
+								(int) numberOfUnits, pricePerUnit));
+
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import mt.client.controller.Controller;
+import mt.Order;
 import mt.client.Session;
 import mt.client.exception.AuthenticationException;
 import mt.client.exception.ConnectionClosedException;
@@ -264,21 +266,21 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
         }
     }                                    
 
- private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {  
-    	
+ private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {      
         if (controller.isConnected()) {
-        	if(Session.orders.size() <5){
+//        	if(Session.orders.size() <5){
         		JOptionPane.showMessageDialog(this, "Permitido muito Bem ", "information", JOptionPane.INFORMATION_MESSAGE);
         		form = new PlaceOrderForm(this, true);
                 form.setLocationRelativeTo(this);
                 form.setVisible(true);
         	}
-        	else if (Session.orders.size() >= 5){
-        		 JOptionPane.showMessageDialog(this, "[Region US] Mais de 6 ordens nao permito -"
-        		 		+ " \nCancela uma ordem ", "Warning", JOptionPane.WARNING_MESSAGE);
-        	}
+//        	else if (Session.orders.size() >= 5){
+//        		 JOptionPane.showMessageDialog(this, "[Region US] Mais de 6 ordens nao permito -"
+//        		 		+ " \nCancela uma ordem ", "Warning", JOptionPane.WARNING_MESSAGE);
+//        	}
              
-        } else {
+// }
+ else {
             JOptionPane.showMessageDialog(this, "You must be connected to a server to place orders. \nNavigate to File > Connect.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
