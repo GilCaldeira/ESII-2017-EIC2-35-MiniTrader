@@ -37,7 +37,7 @@ public class MicroServer implements MicroTraderServer {
 
 	//class to write order in a xml file
 	private WriteXMLFile xml;
-
+//
 	public static void main(String[] args) {
 
 		JFrame frame = new JFrame("Server  View");
