@@ -86,7 +86,7 @@ public class Order implements Serializable {
 	public int getNumberOfUnits() {
 		return numberOfUnits;
 	}
-
+//
 	public void setNumberOfUnits(int units) {
 		this.numberOfUnits = units;
 	}
