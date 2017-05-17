@@ -12,8 +12,7 @@ import mt.comm.impl.ClientCommImpl;
 public class MicroTraderClientImpl implements MicroTraderClient {
 	
 	//Commit************************
-	//Commit1*************************AS
-	//PUSHHHHHHHHHH******************
+
 	public static void main(String args[]) {
 		ClientComm clientComm = new ClientCommImpl();
 		MicroTraderClient client = new MicroTraderClientImpl();
