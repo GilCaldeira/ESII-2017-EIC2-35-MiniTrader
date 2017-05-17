@@ -8,7 +8,7 @@ import mt.client.Session;
 import mt.client.ui.MicroTraderClientUI;
 import mt.comm.ClientComm;
 import mt.comm.impl.ClientCommImpl;
-
+//k
 public class MicroTraderClientImpl implements MicroTraderClient {
 	
 	//Commit************************
