@@ -259,7 +259,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 						}
 					}
 
-					if (tmp2 == 0)
+					if (tmp2 == 0) //caso nao haja alteraçoes
 						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,
 								(int) numberOfUnits, pricePerUnit));
 
