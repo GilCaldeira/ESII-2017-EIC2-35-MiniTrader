@@ -13,7 +13,6 @@ import mt.client.controller.Controller;
  *
  */
 public class PlaceOrderForm extends javax.swing.JDialog {
-	int tmp2 =0;
 	private Controller controller = new Controller();
 
 	/**
@@ -230,8 +229,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 					controller.sendOrder(
 							Order.createBuyOrder(controller.getLoggedUser(), stock, (int) numberOfUnits, pricePerUnit));
 				} else if (sellRdBtn.isSelected()) {
-						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,
-								(int) numberOfUnits, pricePerUnit));
+						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,(int) numberOfUnits, pricePerUnit));
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
