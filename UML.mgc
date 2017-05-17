@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ClassDiagram>
-<<<<<<< HEAD
-    <Class name="mt.server.MicroServer" x="346" y="206">
-=======
-    <Class name="mt.server.MicroServer" x="196" y="62">
->>>>>>> branch 'MiniTrader-AS-1.1' of https://github.com/GilCaldeira/ESII-2017-EIC2-35-MiniTrader
+    <Class name="mt.comm.ServerComm" x="34" y="116">
         <AttributesDisplayFilter public-accepted="true"
             private-accepted="true" protected-accepted="true"
             default-accepted="true" static-accepted="false"/>
@@ -12,5 +8,40 @@
             private-accepted="false" protected-accepted="false"
             default-accepted="false" static-accepted="false"
             accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="mt.Order" x="424" y="391">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="mt.server.MicroTraderServer" x="760" y="151">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="mt.server.MicroServer" x="324" y="68">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="false"
+            default-accepted="false" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="false"
+            private-accepted="true" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="mt.server.MicroTraderServer"/>
+        <Association destinationClassName="mt.Order"
+            endpointName="updatedOrders" kind="Simple"/>
+        <Association destinationClassName="mt.comm.ServerComm"
+            endpointName="serverComm" kind="Simple"/>
+        <Communication destinationClassName="mt.comm.ServerComm"/>
+        <Communication destinationClassName="mt.Order"/>
+        <Communication destinationClassName="mt.server.MicroTraderServer"/>
     </Class>
 </ClassDiagram>

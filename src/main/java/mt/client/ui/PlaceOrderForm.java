@@ -1,7 +1,11 @@
 package mt.client.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 import mt.Order;
+import mt.client.Session;
 import mt.client.controller.Controller;
 
 /**
@@ -9,7 +13,7 @@ import mt.client.controller.Controller;
  *
  */
 public class PlaceOrderForm extends javax.swing.JDialog {
-
+	int tmp2 =0;
 	private Controller controller = new Controller();
 
 	/**
@@ -179,8 +183,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 		if (stock.isEmpty()) {
 			message = (message.isEmpty() ? "" : message + "\n") + "Stock must be provided.";
 		}
-		
-		
+
 	//   Uma quantidade de ordem única (compra ou ordem de venda) nunca pode ser inferior a 10 unidades (todas as regiões)
 		
 		if (numberOfUnitsTxt.getText().isEmpty() ||Integer.parseInt(numberOfUnitsTxt.getText()) < 10) {
@@ -227,8 +230,8 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 					controller.sendOrder(
 							Order.createBuyOrder(controller.getLoggedUser(), stock, (int) numberOfUnits, pricePerUnit));
 				} else if (sellRdBtn.isSelected()) {
-					controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock, (int) numberOfUnits,
-							pricePerUnit));
+						controller.sendOrder(Order.createSellOrder(controller.getLoggedUser(), stock,
+								(int) numberOfUnits, pricePerUnit));
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
