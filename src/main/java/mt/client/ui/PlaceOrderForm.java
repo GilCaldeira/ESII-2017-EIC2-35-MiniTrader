@@ -230,7 +230,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 				} else if (sellRdBtn.isSelected()) {
 					tmp2 = 0;
 
-					int maxSells = 5; // maximos de SELLS - 1
+					int maxSells = 4; // maximos de SELLS - 1
 					String username = Session.loggedUser;
 					List<Order> ordersAux = Session.orders; // vai buscar a
 															// lista de ORDERS
@@ -254,7 +254,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 						if (ordersAux2.size() > maxSells) {
 							tmp2 = 1;
 							JOptionPane.showMessageDialog(this,
-									"[Region US] Não permitido mais de 6 Orders de venda" + " \nCancela uma ordem ",
+									"[Region US] Não permitido mais de 5 Orders de venda" + " \nCancela uma ordem ",
 									"Warning", JOptionPane.WARNING_MESSAGE);
 						}
 					}
