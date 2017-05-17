@@ -90,6 +90,7 @@ public class Order implements Serializable {
 	public void setNumberOfUnits(int units) {
 		this.numberOfUnits = units;
 	}
+//	
 
 	public String getNickname() {
 		return nickname;
