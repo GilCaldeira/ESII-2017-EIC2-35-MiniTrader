@@ -267,16 +267,9 @@ public class MicroTraderClientUI extends javax.swing.JFrame {
     private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {  
     	
         if (controller.isConnected()) {
-        	if(Session.orders.size() <5){
-        		JOptionPane.showMessageDialog(this, "Permitido muito Bem ", "information", JOptionPane.INFORMATION_MESSAGE);
         		form = new PlaceOrderForm(this, true);
                 form.setLocationRelativeTo(this);
                 form.setVisible(true);
-        	}
-        	else if (Session.orders.size() >= 5){
-        		 JOptionPane.showMessageDialog(this, "Mais de 6 ordens permitidos - Cancela uma ", "Warning", JOptionPane.WARNING_MESSAGE);
-        	}
-             
         } else {
             JOptionPane.showMessageDialog(this, "You must be connected to a server to place orders. \nNavigate to File > Connect.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
