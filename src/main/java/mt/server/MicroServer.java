@@ -124,8 +124,12 @@ public class MicroServer implements MicroTraderServer {
 						if(msg.getOrder().getServerOrderID() == EMPTY){
 							msg.getOrder().setServerOrderID(id++);
 						}
-						notifyAllClients(msg.getOrder());
-						processNewOrder(msg);
+						if(msg.getOrder().getNumberOfUnits() >= 10)	{			//REQUISITO NAO FUNCIONAL
+							notifyAllClients(msg.getOrder());
+							processNewOrder(msg);
+						}/*else{
+							
+						}*/
 					} catch (ServerException e) {
 						serverComm.sendError(msg.getSenderNickname(), e.getMessage());
 					}
