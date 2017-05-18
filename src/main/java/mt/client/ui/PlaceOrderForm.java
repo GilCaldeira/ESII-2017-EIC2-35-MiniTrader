@@ -186,7 +186,7 @@ public class PlaceOrderForm extends javax.swing.JDialog {
 	//   Uma quantidade de ordem única (compra ou ordem de venda) nunca pode ser inferior a 10 unidades (todas as regiões)
 		
 		if (numberOfUnitsTxt.getText().isEmpty() ||Integer.parseInt(numberOfUnitsTxt.getText()) < 10) {
-			message = (message.isEmpty() ? "" : message + "\n") + "Number of units must be provided.";
+			message = (message.isEmpty() ? "" : message + "\n") + "Number of units must be provided (never less than 10 units).";
 		} else {
 			try {
 				numberOfUnits = Long.valueOf(numberOfUnitsTxt.getText().trim());
